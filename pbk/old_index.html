@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+    <link rel="stylesheet" href="../style/old-style.css" />
+    <title>Propagate</title>
+  </head>
+
+  <body>
+    <div class="editor-window">
+      <div class="top-bar">
+        <div class="top-section">
+          <form
+            id="input-container-top"
+            onsubmit="changeCompName(); return false;"
+          >
+            <div class="input-container" id="input-container-top">
+              <label for="inp" class="inp" id="inp-comp">
+                <input
+                  type="text"
+                  id="comp-inp"
+                  placeholder="&nbsp;"
+                  autocomplete="off"
+                />
+                <span class="label" id="comp-label">Component Name</span>
+              </label>
+              <div class="done-container">
+                <input
+                  type="image"
+                  src="./img/doneIcon.png"
+                  alt=""
+                  width="25"
+                  height="25"
+                  alt="Submit Form"
+                />
+              </div>
+            </div>
+          </form>
+          <div class="top-close" onclick="closeCompShownMode()">
+            <img src="./img/closeIcon.png" alt="" width="30" height="30" />
+          </div>
+        </div>
+      </div>
+      <div class="disabled-background"></div>
+      <div class="gates">
+        <button class="input" onclick="generateInput()"></button>
+
+        <button class="output" onclick="generateOutput()"></button>
+
+        <button class="andGate" onclick="generateANDGate()"></button>
+
+        <button class="orGate" onclick="generateORGate()"></button>
+
+        <button class="notGate" onclick="generateNOTGate()"></button>
+
+        <button class="nandGate" onclick="generateNANDGate()"></button>
+
+        <button class="norGate" onclick="generateNORGate()"></button>
+
+        <button class="xorGate" onclick="generateXORGate()"></button>
+
+        <button class="xnorGate" onclick="generateXNORGate()"></button>
+
+        <button class="delete-btn" onclick="toggleDeleteMode()"></button>
+      </div>
+
+      <div class="custom-gates">
+        <h5>Gate Library</h5>
+      </div>
+
+      <div class="popup-click">
+        <span id="error"></span>
+        <form class="ccg-div" onsubmit="createCustomGate(); return false;">
+          <div class="input-container">
+            <label for="inp" class="inp">
+              <input
+                type="text"
+                id="ccg-inp"
+                placeholder="&nbsp;"
+                autocomplete="off"
+              />
+              <div class="label">Gate Name</div>
+            </label>
+            <div class="done-container">
+              <input
+                type="image"
+                src="./img/doneIcon.png"
+                alt=""
+                width="25"
+                height="25"
+                alt="Submit Form"
+              />
+            </div>
+          </div>
+        </form>
+
+        <button class="ccg-btn" onclick="clone()">Duplicate</button>
+        <button class="ccg-btn" onclick="deleteSelected()">Delete</button>
+        <button class="ccg-btn" onclick="closeCcg()">Cancel</button>
+      </div>
+
+      <div class="popup-container">
+        <div class="popup-input">
+          <div class="img-container" onclick="closePopup()">
+            <img src="./img/closeIcon.png" alt="" width="25" height="25" />
+          </div>
+          <form class="ccg-div" onsubmit="handlePopupInput(); return false;">
+            <div class="input-container" id="input-container-popup">
+              <label for="inp" class="inp">
+                <input
+                  type="text"
+                  id="inp"
+                  placeholder="&nbsp;"
+                  autocomplete="off"
+                />
+                <span class="label">Gate Name</span>
+              </label>
+              <div class="done-container">
+                <input
+                  type="image"
+                  src="./img/doneIcon.png"
+                  alt=""
+                  width="25"
+                  height="25"
+                  alt="Submit Form"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="info-container" onclick="closeInformation()">
+        <div class="popup-info">
+          <h3>Gate Editor</h3>
+
+          <div class="tips">
+            <ul>create a new gate to post</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"
+      integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="js/variables.js"></script>
+    <script src="js/functions/cloneFunctions.js"></script>
+    <script src="js/functions/functions.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/draggable.js"></script>
+    <script src="js/node.js"></script>
+    <script src="js/select.js"></script>
+    <script src="js/wires/wire.js"></script>
+    <script src="js/wires/hiddenWire.js"></script>
+    <script src="js/gates.js"></script>
+    <script src="js/customGate.js"></script>
+  </body>
+</html>
