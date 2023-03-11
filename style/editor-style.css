@@ -109,6 +109,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    justify-items: right;
   }
   .menu-btn {
     padding: 10px;
@@ -123,12 +124,25 @@ body {
     background-color: var(--btn-color-active);
   }
   .back-btn {
-    justify-self: left;
+    position: absolute;
+    left: var(--margin-width);
+    width: 12vw;
+    color: white;
+    background-color: var(--btn-color);
+    text-decoration: none;
+    padding: 10px;
+    font-family: "Courier New";
+    border-radius: var(--corner-rad);
+    text-align: center;
   }
   .clear-btn {
     justify-self: right;
   }
   .save-btn {
     justify-self: right;
+  }
+  .button-container {
+    position: absolute;
+    right: var(--margin-width);
   }
   
