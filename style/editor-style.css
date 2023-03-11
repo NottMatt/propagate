@@ -31,6 +31,7 @@ body {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
+    align-items: center;
     margin-top: var(--margin-width);
     margin-bottom: var(--margin-width);
   }
@@ -72,7 +73,8 @@ body {
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: space-between;
-    height: 300px;
+    height: 400px;
+    margin-left: 20px;
   }
   .gate-btn {
     background: none;
@@ -83,10 +85,10 @@ body {
   .gate-svg {
     padding: 0px;
     margin: 0px;
-    height: 50px;
+    height: 8vh;
   }
   .gate-img {
-    width: 80px;
+    width: 5vw;
   }
 
   /* editor */
