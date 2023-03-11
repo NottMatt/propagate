@@ -58,19 +58,26 @@ body {
 .search-bar {
   max-width: calc(100% - (2 * var(--margin-width)));
   margin: var(--margin-width);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .search-input {
   border-radius: var(--corner-rad);
   padding: 10px;
   width: 30vw;
+  height: 30px;
 }
 .search-btn {
   background-color: var(--btn-color);
     border: none;
+    height: 35px;
     border-radius: var(--corner-rad);
     padding: 10px;
     font-family: "Courier New";
     color: white;
+    margin-right: 10px;
+    width: 8vw;
 }
 .search-btn:active {
   background-color: var(--btn-color-active);
