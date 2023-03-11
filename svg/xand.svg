@@ -1,101 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   id="svg2"
-   viewBox="0 0 55.013882 27.00169"
-   version="1.0"
+   width="25.4mm"
+   height="25.4mm"
+   viewBox="0 0 25.4 25.4"
+   version="1.1"
+   id="svg5"
    sodipodi:docname="xand.svg"
-   width="55.013882"
-   height="27.00169"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <defs
-     id="defs17" />
+   xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview15"
+     id="namedview7"
      pagecolor="#ffffff"
      bordercolor="#999999"
      borderopacity="1"
      inkscape:pageshadow="0"
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="8.039604"
-     inkscape:cx="27.986453"
-     inkscape:cy="32.650862"
+     inkscape:zoom="2.8934905"
+     inkscape:cx="-24.537838"
+     inkscape:cy="49.939684"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
   <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
      id="layer1"
-     stroke="#000000"
-     fill="none"
-     transform="translate(-11.542118,-17.594)">
+     transform="translate(-119.78978,-72.350739)">
     <path
-       id="path6087"
+       id="path10206"
        stroke-linecap="square"
-       d="m 25,18.096 19,-0.002 c 7.176,0 13,5.824 13,13 0,7.176 -5.824,13 -13,13 H 25 Z M 21.086118,44.094 V 18.096 M 57,31.094 h 9.056 m -54.013882,-6.5 h 9.044 m -9.044,13 h 9.044"
-       sodipodi:nodetypes="ccsscccccccccc" />
+       d="m 164.09189,129.69888 v 0.0167 c 0.58182,1.00938 0.91784,2.17514 0.91784,3.42291 0,1.24804 -0.33602,2.41379 -0.91784,3.42265 v 0.0159 h 3.56394 c 2.54264,0 4.7625,-1.3851 5.95312,-3.43853 -1.19062,-2.05317 -3.41048,-3.43958 -5.95312,-3.43958 z m 10.58333,3.43984 c 0,0.2921 -0.23812,0.52917 -0.52916,0.52917 -0.29105,0 -0.52917,-0.23707 -0.52917,-0.52917 0,-0.2921 0.23812,-0.52916 0.52917,-0.52916 0.29104,0 0.52916,0.23706 0.52916,0.52916 z m 0,-2.6e-4 h 2.38125 m -14.68437,-1.71979 h 2.38125 m -2.38125,3.43958 h 2.38125"
+       style="fill:#ffffff;stroke:#ececec;stroke-width:0.565;stroke-miterlimit:4;stroke-dasharray:none" />
+    <path
+       id="path6087-6"
+       stroke-linecap="square"
+       d="m 127.94614,81.629278 5.0271,-5.3e-4 c 1.89865,0 3.43958,1.540934 3.43958,3.439584 0,1.89865 -1.54093,3.439583 -3.43958,3.439583 h -5.0271 z m -1.03555,6.878637 v -6.878637 m 9.50223,3.439054 h 2.39607 M 124.5177,83.34854 h 2.39289 m -2.39289,3.439584 h 2.39289"
+       sodipodi:nodetypes="ccsscccccccccc"
+       style="fill:none;stroke:#ececec;stroke-width:0.665;stroke-miterlimit:4;stroke-dasharray:none" />
   </g>
-  <metadata
-     id="metadata12">
-    <rdf:RDF>
-      <cc:Work>
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <cc:license
-           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
-        <dc:publisher>
-          <cc:Agent
-             rdf:about="http://openclipart.org/">
-            <dc:title>Openclipart</dc:title>
-          </cc:Agent>
-        </dc:publisher>
-        <dc:date>2008-02-05T18:37:38</dc:date>
-        <dc:description>A collection of gates for digital circuits designed according to the official IEEE Std 91-1984, Appendix A guidelines.</dc:description>
-        <dc:source>http://openclipart.org/detail/12885/digital-logic-gates-by-nobody</dc:source>
-        <dc:creator>
-          <cc:Agent>
-            <dc:title>nobody</dc:title>
-          </cc:Agent>
-        </dc:creator>
-        <dc:subject>
-          <rdf:Bag>
-            <rdf:li>clip art</rdf:li>
-            <rdf:li>clipart</rdf:li>
-            <rdf:li>digital</rdf:li>
-            <rdf:li>gates</rdf:li>
-            <rdf:li>image</rdf:li>
-            <rdf:li>inverter</rdf:li>
-            <rdf:li>logic</rdf:li>
-            <rdf:li>media</rdf:li>
-            <rdf:li>nand</rdf:li>
-            <rdf:li>nor</rdf:li>
-            <rdf:li>public domain</rdf:li>
-            <rdf:li>svg</rdf:li>
-            <rdf:li>xnor</rdf:li>
-            <rdf:li>xor</rdf:li>
-          </rdf:Bag>
-        </dc:subject>
-      </cc:Work>
-      <cc:License
-         rdf:about="http://creativecommons.org/licenses/publicdomain/">
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#Reproduction" />
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#Distribution" />
-        <cc:permits
-           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
-      </cc:License>
-    </rdf:RDF>
-  </metadata>
 </svg>
