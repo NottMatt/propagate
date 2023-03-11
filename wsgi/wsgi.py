@@ -61,6 +61,7 @@ def register():
     else:
         return app.send_static_file('html/create-user.html')
 
+
 @app.route('/registration_failed', methods=['GET'])
 def registration_failed():
     return app.send_static_file('html/registration-failure.html')
@@ -93,6 +94,11 @@ def serve_static_files(path):
 @app.route('/gate-editor', methods=['GET'])
 def gate_editor():
     return app.send_static_file('html/gate-editor.html')
+
+
+@app.route('/profile', methods=['GET'])
+def gate_editor():
+    return app.send_static_file('html/profile.html')
 
 
 @app.route("/")
@@ -157,4 +163,5 @@ def get_username_from_id(id: str) -> str:
         user = cur.fetchone()
         if user is None:
             print(f'Error getting username from id', file=sys.stderr)
+            return None
     return user
