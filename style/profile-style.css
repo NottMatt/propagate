@@ -23,86 +23,9 @@ body {
   
     background-color: var(--bg-color);
   }
-  h2 {
-    padding: 0px;
-    margin: 0px;
-  }
 
-
-  /* containers */
-
-  .editor-containers {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: var(--margin-width);
-    margin-bottom: var(--margin-width);
-  }
-
-  .editor-container {
-    background-color: var(--container-color);
-    padding-top: 0px;
-    color: white;
-    text-align: center;
-    border-radius: var(--corner-rad);
-    min-height: calc(100vh - (2 * var(--margin-width)) - var(--bottom-margin));
-  }
-
-  .library-container {
-    width: var(--library-width);
-  }
-
-  .editor-window-container {
-    width: calc(100% - (4 * var(--margin-width)) - var(--toolbar-width) - var(--library-width));
-  }
-
-  .toolbar-container {
-    width: var(--toolbar-width);
-  }
-
-
-  /* library */
-  .library {
-    padding: 10px;
-  }
-
-  /* toolbar */
-  .toolbar {
-    padding: 10px;
-  }
-  .gate-list {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    height: 400px;
-    margin-left: 20px;
-  }
-  .gate-btn {
-    background: none;
-    border: none;
-    padding: 0px;
-    margin: 0px;
-  }
-  .gate-svg {
-    padding: 0px;
-    margin: 0px;
-    height: 7vh;
-  }
-  .gate-img {
-    width: 4vw;
-  }
-
-  /* editor */
-  .editor-window {
-    width: 100%;
-    height: calc(100vh - (2 * var(--margin-width)) - var(--bottom-margin));
-  }
-
-  /* menu */
-  .menu-container {
+/* menu */
+.menu-container {
     width: calc(100vw - (2 * var(--margin-width)));
     height: calc(var(--bottom-margin) - var(--margin-width));
     margin-left: var(--margin-width);
@@ -111,6 +34,7 @@ body {
     flex-wrap: nowrap;
     justify-content: space-between;
     justify-items: right;
+    margin-top: var(--margin-width);
   }
   .menu-btn {
     padding: 10px;
@@ -136,14 +60,10 @@ body {
     border-radius: var(--corner-rad);
     text-align: center;
   }
-  .clear-btn {
-    justify-self: right;
-  }
-  .save-btn {
+  .edit-btn {
     justify-self: right;
   }
   .button-container {
     position: absolute;
     right: var(--margin-width);
   }
-  
