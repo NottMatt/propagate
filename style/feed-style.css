@@ -13,29 +13,65 @@ body {
     --margin-width: 20px;
     --corner-rad: 6px;
     --bottom-margin: 8vh;
+    --container-color: rgb(30, 30, 35);
+    --btn-color: rgb(80, 80, 85);
+    --btn-color-active: rgb(100, 100, 105);
   
   
     background-color: var(--bg-color);
+  }
+  .containers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
   }
 
   /* nav buttons */
   .nav-container {
     display: flex;
-    width: 100vw;
-    height: 20vh;
+    width: 20vw;
     flex-wrap: nowrap;
     flex-direction: column;
     margin: var(--margin-width);
-    justify-content: space-evenly;
   }
 
   .nav-btn {
     padding: 20px;
-    width: 100px;
+    width: 200px;
     height: 20px;
     color: white;
     background-color: var(--container-color);
     text-decoration: none;
     text-align: center;
     border-radius: var(--corner-rad);
+    margin: 10px;
   }
+
+/* feed */
+.feed-container {
+  background-color: var(--container-color);
+  height: 100vh;
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+}
+.search-bar {
+  max-width: calc(100% - (2 * var(--margin-width)));
+  margin: var(--margin-width);
+}
+.search-input {
+  border-radius: var(--corner-rad);
+  padding: 10px;
+  width: 30vw;
+}
+.search-btn {
+  background-color: var(--btn-color);
+    border: none;
+    border-radius: var(--corner-rad);
+    padding: 10px;
+    font-family: "Courier New";
+    color: white;
+}
+.search-btn:active {
+  background-color: var(--btn-color-active);
+}

@@ -60,3 +60,30 @@ body {
     border-radius: var(--corner-rad);
     font-family: "Courier New";
   }
+  
+  .failure-container {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 25vh;
+  }
+  .fail-msg-container {
+    background-color: var(--container-color);
+    margin: var(--margin-width);
+    display: flex;
+    border-radius: var(--corner-rad);
+    padding: 20px;
+    flex-direction: column;
+  }
+  .banner {
+    color: white;
+  }
+  .return {
+    padding: 10px;
+    border-radius: var(--corner-rad);
+    background-color: var(--btn-color);
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+  }

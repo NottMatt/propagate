@@ -7,10 +7,24 @@
         <title>Propagate Feed</title>
     </head>
     <body>
-        <div class="nav-container">
-            <a href="gate-editor" class="nav-btn">Editor</a>
-            <a href="old_index.html" class="nav-btn">Old Editor</a>
-            <a href="register">Create User</a>
-        </div>  
+        <div class="containers">
+            <div class="nav-container">
+                <a href="gate-editor" class="nav-btn">Editor</a>
+                <a href="old_index.html" class="nav-btn">Old Editor</a>
+                <a href="register" class="nav-btn">Create User</a>
+            </div> 
+            <div class="feed-container">
+                <div class="search-bar">
+                    <form action="search-feed" method="post">
+                        <div class="input-container">
+                          <input class="search-input" type="text" placeholder="Search" name="pattern" required>
+                    
+                          <button class="search-btn" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="feed-body"></div>
+            </div>
+        </div>
     </body>
 </html>
