@@ -55,6 +55,8 @@ body {
 
   .editor-window-container {
     width: calc(100% - (4 * var(--margin-width)) - var(--toolbar-width) - var(--library-width));
+    color: white;
+    background: white;
   }
 
   .toolbar-container {
