@@ -1,1 +1,1 @@
-# Logic Simulation Social Media Platform
+# Propagate Logic Simulator
