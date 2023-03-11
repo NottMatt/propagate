@@ -19,6 +19,10 @@ body {
   
     background-color: var(--bg-color);
   }
+  h2 {
+    padding: 0px;
+    margin: 0px;
+  }
 
 
   /* containers */
@@ -55,15 +59,37 @@ body {
 
   /* library */
   .library {
-    padding: 20px;
+    padding: 10px;
   }
 
   /* toolbar */
   .toolbar {
-    padding: 20px;
+    padding: 10px;
+  }
+  .gate-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 300px;
+  }
+  .gate-btn {
+    background: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+  }
+  .gate-svg {
+    padding: 0px;
+    margin: 0px;
+    height: 50px;
+  }
+  .gate-img {
+    width: 80px;
   }
 
   /* editor */
   .editor-window {
-    padding: 20px;
+    padding: 10px;
   }

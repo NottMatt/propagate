@@ -1,11 +1,11 @@
 function preload() {
-  andGate = loadImage("./img/andGate.png");
-  nandGate = loadImage("./img/nandGate.png");
-  norGate = loadImage("./img/norGate.png");
-  notGate = loadImage("./img/notGate.png");
-  orGate = loadImage("./img/orGate.png");
-  xnorGate = loadImage("./img/xnorGate.png");
-  xorGate = loadImage("./img/xorGate.png");
+  andGate = loadImage("../svg/and.svg");
+  nandGate = loadImage("../svg/nand.svg");
+  norGate = loadImage("../svg/nor.svg");
+  notGate = loadImage("../svg/not.svg");
+  orGate = loadImage("../svg/or.svg");
+  xnorGate = loadImage("../svg/xnor.svg");
+  xorGate = loadImage("../svg/xor.svg");
 }
 
 function setup() {
