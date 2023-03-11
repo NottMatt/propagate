@@ -97,7 +97,7 @@ def gate_editor():
 
 
 @app.route('/profile', methods=['GET'])
-def gate_editor():
+def profile():
     return app.send_static_file('html/profile.html')
 
 
