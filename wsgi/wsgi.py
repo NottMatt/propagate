@@ -126,7 +126,7 @@ def component():
                 {'creator_id': creator_id, 'name': component_name,
                     'description': description, 'content': content,
                     'preceded_by': preceded_by})
-            else
+            else:
                 cur.execute('''
                 insert into components (creator_id, component_name,
                 description, content) values (%(creator_id)i, %(name)s,
@@ -152,7 +152,7 @@ def get_db_connection():
                             password='password')
     return conn
 
-def get_username_from_id(id: str): -> str
+def get_username_from_id(id: str) -> str:
     with get_db_connection() as conn, conn.cursor() as cur:
         cur.execute("select username from users where id = '%(user_id)' ;", {'user_id': id})
         user = cur.fetchone()
