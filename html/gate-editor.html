@@ -14,7 +14,7 @@
                 <div class="library"><h2>LIBRARY</h2></div>
             </div>
             <div class="editor-window-container editor-container">
-                <div class="editor-window"></div>
+                <div class="editor-window" id="editor-window"></div>
             </div>
             <div class="toolbar-container editor-container">
                 <div class="toolbar"><h2>GATES</h2>
@@ -69,6 +69,11 @@
                                 <image class="gate-img" href= "../svg/led_b.svg" alt="led_b"/>
                             </svg>
                         </button>
+                        <button class="gate-btn" id="clock-btn">
+                            <svg class="gate-svg">
+                                <image class="gate-img" href= "../svg/clock.svg" alt="clock"/>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -81,4 +86,11 @@
             </div>
         </div>
     </body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"
+      integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="../javascript/canvas-init.js"></script>
 </html>
