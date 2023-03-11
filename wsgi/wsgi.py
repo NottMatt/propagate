@@ -119,7 +119,11 @@ def library():
     if 'user_id' not in flask.session.keys():
         return flask.redirect(flask.url_for("login"))
     with get_db_connection() as conn, conn.cursor() as cur:
-        cur.execute(f'select * from components where id = {flask.session["user_id"]}')
+        cur.execute(f'''
+        select * from components left join saved_components on component_id =
+        components.id where creator_id = {flask.session["user_id"]} or user_id
+        = {flask.session["user_id"]} ;
+        ''')
         library = cur.fetchall()
         return library
 
