@@ -1,0 +1,2 @@
+something to do with 'gates'
+    posts can be called 'gates' because they take an input and produce an output

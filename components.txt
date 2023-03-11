@@ -1,0 +1,12 @@
+or
+and
+not
+nand
+nor
+xor
+xnor
+light_w
+light_r
+light_g
+light_b
+light_y
