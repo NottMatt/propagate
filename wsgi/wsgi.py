@@ -90,13 +90,60 @@ def serve_static_files(path):
         # redirect and log failed request
         return flask.redirect(flask.url_for("index_route"))
 
+
 @app.route('/gate-editor', methods=['GET'])
 def gate_editor():
     return app.send_static_file('html/gate-editor.html')
 
+
 @app.route("/")
 def index_route():
     return app.send_static_file("index.html")
+
+
+# Handle Components
+@app.route('/component', methods=['GET', 'POST'])
+def component():
+    # Bail out if this user is not logged in
+    if 'user_id' not in session:
+        return flask.redirect(flask.url_for("login"))
+
+    if flask.request.method == 'POST':
+        creator_id = session['user_id']
+        component_name = request.form['component_name']
+        description = request.form['description']
+        content = request.form['content']
+
+        # Needs testing
+        with get_db_connection() as conn, conn.cursor() as cur:
+            if 'preceded_by' in request.form.keys():
+                preceded_by = request.form['preceded_by']
+                cur.execute('''
+                insert into components (creator_id, component_name,
+                description, content, preceded_by) values (%(creator_id)i,
+                %(name)s, %(description)s, %(content)s, %(preceded_by)i)
+                ''', 
+                {'creator_id': creator_id, 'name': component_name,
+                    'description': description, 'content': content,
+                    'preceded_by': preceded_by})
+            else
+                cur.execute('''
+                insert into components (creator_id, component_name,
+                description, content) values (%(creator_id)i, %(name)s,
+                %(description)s, %(content)s)
+                ''', 
+                {'creator_id': creator_id, 'name': component_name,
+                    'description': description, 'content': content})
+    else:
+        component_id = request.args.get('id')
+        with get_db_connection() as conn, conn.cursor() as cur:
+            cur.execute("select * from components where id = '%(id)' ;", {'id': component_id})
+            component = cur.fetchone()
+            if component is None:
+                print(f'Error getting component from id', file=sys.stderr)
+            else:
+                print(f'We haven\'t handled this case yet, oops', file=sys.stderr)
+
 
 def get_db_connection():
     conn = psycopg2.connect(host='localhost',
@@ -104,3 +151,11 @@ def get_db_connection():
                             user='flask',
                             password='password')
     return conn
+
+def get_username_from_id(id: str): -> str
+    with get_db_connection() as conn, conn.cursor() as cur:
+        cur.execute("select username from users where id = '%(user_id)' ;", {'user_id': id})
+        user = cur.fetchone()
+        if user is None:
+            print(f'Error getting username from id', file=sys.stderr)
+    return user
