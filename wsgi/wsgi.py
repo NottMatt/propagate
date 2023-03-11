@@ -2,8 +2,12 @@ import flask
 from flask import Flask, request
 import psycopg2
 import sys
+import os
+
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
+
 # configure where the static files are located
 app.static_folder = ".."
 
@@ -15,14 +19,18 @@ def login():
         password = request.form["password"]
 
         with get_db_connection() as conn, conn.cursor() as cur:
-            cur.execute(f"select * from Users where username = '{username}' and password = '{password}';")
+            cur.execute(f"select * from users where username = '{username}' and password = '{password}';")
             users = cur.fetchall()
 
             if len(users) == 0:
-                return flask.redirect(flask.url_for("login_failed"))
+                print(f'Login failed: {username}', file=sys.stderr)
+                return app.send_static_file("html/login-failure.html")
             else:
+                print(f'Login successful: {username}', file=sys.stderr)
                 flask.session['user'] = username
                 return flask.redirect(flask.url_for("index_route"))
+    else:
+        return app.send_static_file('html/login.html');
 
 @app.route('/logout', methods=['GET'])
 def logout():
@@ -38,7 +46,7 @@ def register():
         password_2 = request.form["password_2"]
 
         with get_db_connection() as conn, conn.cursor() as cur:
-            cur.execute(f"select * from Users where username = '{username}' ;")
+            cur.execute(f"select * from users where username = '{username}' ;")
             users = cur.fetchall()
             print(f'User: {users}', file=sys.stderr)
             if len(users) == 0:
