@@ -33,9 +33,17 @@ def login():
         return app.send_static_file('html/login.html');
 
 
+@app.route('/is-logged-in', methods=['GET'])
+def is_logged_in():
+    if 'user_id' in flask.session.keys():
+        return {'response': True}
+    else:
+        return {'response': False}
+
+
 @app.route('/logout', methods=['GET'])
 def logout():
-    session.pop('username', None)
+    flask.session.pop('username', None)
     return flask.redirect(flask.url_for("index_route"))
 
 
@@ -106,15 +114,25 @@ def index_route():
     return app.send_static_file("index.html")
 
 
+@app.route('/library', methods=['GET'])
+def library():
+    if 'user_id' not in flask.session.keys():
+        return flask.redirect(flask.url_for("login"))
+    with get_db_connection() as conn, conn.cursor() as cur:
+        cur.execute(f'select * from components where id = {flask.session["user_id"]}')
+        library = cur.fetchall()
+        return library
+
+
 # Handle Components
 @app.route('/component', methods=['GET', 'POST'])
 def component():
     # Bail out if this user is not logged in
-    if 'user_id' not in session:
+    if 'user_id' not in flask.session:
         return flask.redirect(flask.url_for("login"))
 
     if flask.request.method == 'POST':
-        creator_id = session['user_id']
+        creator_id = flask.session['user_id']
         component_name = request.form['component_name']
         description = request.form['description']
         content = request.form['content']
