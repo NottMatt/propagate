@@ -85,7 +85,7 @@ def serve_static_files(path):
             return app.send_static_file(path)
         elif path.startswith("style/"):
             return app.send_static_file(path)
-        elif path.startswith("js/"):
+        elif path.startswith("javascript/"):
             return app.send_static_file(path)
         elif path == "style.css":
             return app.send_static_file(path)
@@ -101,11 +101,15 @@ def serve_static_files(path):
 
 @app.route('/gate-editor', methods=['GET'])
 def gate_editor():
+    if 'user_id' not in flask.session.keys():
+        return flask.redirect(flask.url_for("login"))
     return app.send_static_file('html/gate-editor.html')
 
 
 @app.route('/profile', methods=['GET'])
 def profile():
+    if 'user_id' not in flask.session.keys():
+        return flask.redirect(flask.url_for("login"))
     return app.send_static_file('html/profile.html')
 
 
@@ -132,7 +136,7 @@ def library():
 @app.route('/component', methods=['GET', 'POST'])
 def component():
     # Bail out if this user is not logged in
-    if 'user_id' not in flask.session:
+    if 'user_id' not in flask.session.keys():
         return flask.redirect(flask.url_for("login"))
 
     if flask.request.method == 'POST':

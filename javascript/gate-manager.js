@@ -26,3 +26,7 @@ clockBtn.addEventListener("click", buttonActivity);
 function buttonActivity() {
     console.log("click!");
 }
+
+function fetchLibrary() {
+    fetch('/library').then((response) => response.json()).then((data) => document.getElementById("library-pane").innerHTML = data)
+}

@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=0.5" />
         <link rel="stylesheet" href="../style/editor-style.css" />
         <title>Propagate Editor</title>
+        <script src="/javascript/gate-manager.js"></script>
     </head>
-    <body>
-
+    <body onload="fetchLibrary()">
         <!-- editor containers -->
         <div class="editor-containers">
             <div class="library-container editor-container">
-                <div class="library"><h2>LIBRARY</h2></div>
+                <div class="library"><h2>LIBRARY</h2>
+                <p id='library-pane'></p></div>
             </div>
             <div class="editor-window-container editor-container">
                 <div class="editor-window" id="editor-window"></div>
@@ -92,6 +93,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script src="../javascript/canvas-init.js"></script>
-    <script src="../javascript/gate.js"></script>
+    <script src="/javascript/canvas-init.js"></script>
+    <script src="/javascript/gate.js"></script>
 </html>
