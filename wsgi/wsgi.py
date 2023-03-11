@@ -131,6 +131,18 @@ def library():
         library = cur.fetchall()
         return library
 
+@app.route('/search', methods=['GET'])
+def search():
+    search_term = request.args.get('q')
+
+    with get_db_connection() as conn, conn.cursor() as cur:
+        cur.execute('''
+        select * from components where component_name like %(search_term)s or
+        description like %(search_term)s;
+        ''', {'search_term': '%' + search_term + '%'})
+        search_results = cur.fetchall()
+        return search_results
+
 
 # Handle Components
 @app.route('/component', methods=['GET', 'POST'])
