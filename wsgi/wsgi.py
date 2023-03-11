@@ -19,23 +19,26 @@ def login():
         password = request.form["password"]
 
         with get_db_connection() as conn, conn.cursor() as cur:
-            cur.execute(f"select * from users where username = '{username}' and password = '{password}';")
-            users = cur.fetchall()
+            cur.execute('select * from users where username = %(username)s ;', {'username': username})
+            user_id = cur.fetchall()
 
-            if len(users) == 0:
-                print(f'Login failed: {username}', file=sys.stderr)
+            if len(user_id) == 0:
+                print('Login failed: {username}', file=sys.stderr)
                 return app.send_static_file("html/login-failure.html")
             else:
-                print(f'Login successful: {username}', file=sys.stderr)
-                flask.session['user'] = username
+                print(f'Login successful: {username}:{user_id[0][0]}', file=sys.stderr)
+                flask.session['user_id'] = user_id[0][0]
+                flask.session['username'] = username
                 return flask.redirect(flask.url_for("index_route"))
     else:
         return app.send_static_file('html/login.html');
 
+
 @app.route('/logout', methods=['GET'])
 def logout():
-    session.pop('user', None)
+    session.pop('username', None)
     return flask.redirect(flask.url_for("index_route"))
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -46,11 +49,13 @@ def register():
         password_2 = request.form["password_2"]
 
         with get_db_connection() as conn, conn.cursor() as cur:
-            cur.execute(f"select * from users where username = '{username}' ;")
+            cur.execute('select * from users where username = %(username)s ;',
+                    {'username': username})
             users = cur.fetchall()
             print(f'User: {users}', file=sys.stderr)
             if len(users) == 0:
-                cur.execute(f"insert into users (username, password) values ('{username}', '{password_1}')")
+                cur.execute('insert into users (username, password) values (%(username)s, %(password)s)', 
+                        {'username': username, 'password': password_1})
                 return flask.redirect(flask.url_for("index_route"))
             else:
                 return flask.redirect(flask.url_for("registration_failed"))
