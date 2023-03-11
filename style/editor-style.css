@@ -10,11 +10,15 @@ body {
     /* editor-variables */
     --bg-color: rgb(50, 50, 55);
     --container-color: rgb(30, 30, 35);
+    --btn-color: rgb(80, 80, 85);
+    --btn-color-active: rgb(100, 100, 105);
     --margin-width: 20px;
     --library-width: 20vw;
     --toolbar-width: 10vw;
     --corner-rad: 6px;
     --bottom-margin: 8vh;
+    --red-color: rgb(255, 89, 89);
+    --green-color: rgb(44, 255, 149);
   
   
     background-color: var(--bg-color);
@@ -95,3 +99,36 @@ body {
   .editor-window {
     padding: 10px;
   }
+
+  /* menu */
+  .menu-container {
+    width: calc(100vw - (2 * var(--margin-width)));
+    height: calc(var(--bottom-margin) - var(--margin-width));
+    margin-left: var(--margin-width);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .menu-btn {
+    padding: 10px;
+    font-family: "Courier New";
+    background-color: var(--btn-color);
+    border: none;
+    border-radius: var(--corner-rad);
+    width: 12vw;
+    color: white;
+  }
+  .menu-btn:active {
+    background-color: var(--btn-color-active);
+  }
+  .back-btn {
+    justify-self: left;
+  }
+  .clear-btn {
+    justify-self: right;
+  }
+  .save-btn {
+    justify-self: right;
+  }
+  
