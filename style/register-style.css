@@ -87,3 +87,15 @@ body {
     color: white;
     text-decoration: none;
   }
+  .register-btn {
+    background-color: var(--btn-color);
+    border: none;
+    border-radius: var(--corner-rad);
+    padding: 10px;
+    margin-top: 20px;
+    font-family: "Courier New";
+    color: white;
+    height: 20px;
+    text-decoration: none;
+    text-align: center;
+  }
