@@ -335,8 +335,10 @@
     load();
   }
   function sendModel() {
-    let name = prompt("Please enter component name");
-    let desc = prompt("Please enter component description");
+    let name = document.getElementById("modelname").value;
+    let desc = document.getElementById("modeldesc").value;
+    console.log(name)
+    console.log(desc)
 
     if ((name != null) && (desc != null)) {
         var data = document.getElementById("mySavedModel").value;
@@ -350,7 +352,6 @@
         xhr.open("POST", "/component", true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.send(formdata);
-        console.log("done!")
     }
     else
     {
@@ -373,6 +374,8 @@
     <button class="btn" onclick="location.reload()">Clear</button>
     <button class="btn" onclick="sendModel()">Post</button>
     <a href="/"><button class="btn">Back</button></a>
+    <input type="text" name="component_name" id="modelname" required>
+    <input type="text" name="component_desc" id="modeldesc" required>
   </div>
   <textarea id="mySavedModel" style="width:100%;height:200px">{ "class": "go.GraphLinksModel",
 "linkFromPortIdProperty": "fromPort",
