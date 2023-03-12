@@ -15,7 +15,9 @@ function searchPosts()
             else {
                 data.forEach(
                     element => feedbody.innerHTML +=
-                    ("<div class=\"feed-post\"><h2>"
+                    ("<div class=\"feed-post\" onclick=\"window.location.replace('gate-editor?id="
+                    + element["component_id"]
+                    + "')\"><h2>"
                     + element["component_name"]
                     + "</h2><h3>"
                     + element["description"]

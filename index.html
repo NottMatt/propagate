@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="style/feed-style.css" />
         <title>Propagate Feed</title>
     </head>
-    <body>
+    <body onload="searchPosts()">
         <div class="containers">
             <div class="nav-container">
                 <a href="gate-editor" class="nav-btn">Editor</a>
@@ -18,10 +18,10 @@
                     <div class="input-container">
                         <input class="search-input" type="text"
                             placeholder="Search" name="q" id="searchbar" required>
-                        <button class="search-btn" onclick="searchPosts()" on>Search</button>
+                        <button class="search-btn" onclick="searchPosts()">Search</button>
                     </div>
                 </div>
-                <div class="feed-body" id="feed-body">
+                <div class="feed-body" id="feed-body" onclick="window.location.replace('/html/gate-editor?=5')">
                 </div>
             </div>
         </div>
