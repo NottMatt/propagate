@@ -27,6 +27,7 @@ body {
     justify-content: center;
     width: 100vw;
     height: 100vh;
+    
   }
   .input-container {
     background-color: var(--container-color);
@@ -35,6 +36,10 @@ body {
     border-radius: var(--corner-rad);
     padding: 20px;
     flex-direction: column;
+    border: none;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(255, 255, 0);
+    border-bottom-width: 4px;
   }
   label {
     color: white;
