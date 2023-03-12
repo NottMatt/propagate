@@ -57,11 +57,11 @@ body {
 }
 
 .feed-post {
-  background-color: darkgray;
+  background-color: var(--bg-color);
   height: 250px;
-  weight: 150px;
-  border: solid;
-  border-width: 1px;
+  width: calc(100% - (2 * var(--margin-width)));
+  border: none;
+  border-radius: var(--corner-rad);
   margin: auto;
   padding: 10px
 }
@@ -93,3 +93,18 @@ body {
 .search-btn:active {
   background-color: var(--btn-color-active);
 }
+
+h2 {
+  background-color: var(--btn-color);
+  color: white;
+  padding: 10px;
+  border-radius: var(--corner-rad);
+}
+h3 {
+  background-color: rgb(40, 40, 45);
+  color: grey;
+  padding: 10px;
+  height: 30%;
+  border-radius: var(--corner-rad);
+}
+
