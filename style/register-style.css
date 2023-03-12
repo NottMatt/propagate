@@ -15,7 +15,6 @@ body {
     --margin-width: 20px;
     --corner-rad: 6px;
   
-  
     background-color: var(--bg-color);
   }
   h2 {
