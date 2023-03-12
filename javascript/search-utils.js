@@ -8,7 +8,7 @@ function searchPosts()
         .then((data) =>
         {
             console.log(data)
-            data.foreach(
+            data.forEach(
                 element => document.getElementById("feed-body").innerHTML += "<div class=\"feed-post\"><h2>Testing name</h2><h3>Testing desc</h3></div>"
             )
         });
