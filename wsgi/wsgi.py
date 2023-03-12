@@ -189,13 +189,21 @@ def component():
             return flask.redirect(flask.url_for("gate_editor"))
     else:
         component_id = request.args.get('id')
+        print(f'id: {component_id}')
         with get_db_connection() as conn, conn.cursor() as cur:
-            cur.execute("select * from components where id = '%(id)s' ;", {'id': component_id})
+            cur.execute("select * from components where id = %(id)s ;", {'id': component_id})
             component = cur.fetchone()
             if component is None:
                 print(f'Error getting component from id', file=sys.stderr)
             else:
-                print(f'We haven\'t handled this case yet, oops', file=sys.stderr)
+                result = {
+                        'component_id': component[0],
+                        'creator_id': component[1],
+                        'component_name': component[2],
+                        'description': component[3],
+                        'content': component[4]
+                        }
+                return result
 
 
 def get_db_connection():
