@@ -60,7 +60,6 @@ body {
   flex-direction: column;
   justify-content: left;
 }
-
 .feed-post {
   background-color: var(--bg-color);
   height: 250px;
