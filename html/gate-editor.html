@@ -341,13 +341,15 @@
     if ((name != null) && (desc != null)) {
         var data = document.getElementById("mySavedModel").value;
         var xhr = new XMLHttpRequest()
+        var formdata = new FormData()
+
+        formdata.append("component_name", name)
+        formdata.append("description", desc)
+        formdata.append("content", data)
+
         xhr.open("POST", "/component", true);
-        xhr.setRequestHeader('Content-type', 'application/json');
-        xhr.send(JSON.stringify({
-          'component_name': name,
-          'description': desc,
-          'content': data
-        }));
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(formdata);
         console.log("done!")
     }
     else
