@@ -335,7 +335,12 @@
     load();
   }
   function sendModel() {
-    console.log(document.getElementById("mySavedModel").value);
+    var data = document.getElementById("mySavedModel").value;
+    var xhr = new XMLHttpRequest()
+    xhr.open("POST", "/component", true);
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send(data);
+    console.log("done!")
   }
   window.addEventListener('DOMContentLoaded', init);
 </script>
