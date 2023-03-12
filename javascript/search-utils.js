@@ -9,10 +9,15 @@ function searchPosts()
         {
             var feedbody = document.getElementById("feed-body")
             feedbody.innerHTML = ""
-            console.log(data)
-            data.forEach(
-                element => feedbody.innerHTML += "<div class=\"feed-post\"><h2>Testing name</h2><h3>Testing desc</h3></div>"
-            )
+            if (data.length == 0) {
+                feedbody.innerHTML = "<p style=\"color='red'\">No results</p>"
+            }
+            else {
+                data.forEach(
+                    element => feedbody.innerHTML += "<div class=\"feed-post\"><h2>Testing name</h2><h3>Testing desc</h3></div>"
+                )
+            }
+
         });
 }
 
