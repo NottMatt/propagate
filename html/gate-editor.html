@@ -273,7 +273,7 @@
     node.findLinksOutOf().each(link => link.findObject("SHAPE").stroke = color);
   }
 
-  
+
   // update nodes by the specific function for its type
   // determine the color of links coming out of this node based on those coming in and node type
 
@@ -323,6 +323,7 @@
     node.linksConnected.each(link => { node.findObject("NODESHAPE").fill = link.findObject("SHAPE").stroke; });
   }
 
+  
   // save a model to and load a model from JSON text, displayed below the Diagram
   function save() {
     document.getElementById("mySavedModel").value = myDiagram.model.toJson();
