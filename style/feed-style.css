@@ -55,12 +55,13 @@ body {
   width: 80vw;
   display: flex;
   flex-direction: column;
+  justify-content: left;
 }
 
 .feed-post {
   background-color: var(--bg-color);
   height: 250px;
-  width: calc(100% - (2 * var(--margin-width)));
+  width: 80vw;
   border: none;
   border-radius: var(--corner-rad);
   margin: auto;
