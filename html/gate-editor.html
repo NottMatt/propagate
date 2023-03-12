@@ -323,7 +323,7 @@
     node.linksConnected.each(link => { node.findObject("NODESHAPE").fill = link.findObject("SHAPE").stroke; });
   }
 
-  
+
   // save a model to and load a model from JSON text, displayed below the Diagram
   function save() {
     document.getElementById("mySavedModel").value = myDiagram.model.toJson();
@@ -363,9 +363,7 @@
         ).catch((error) => {
           console.error("Error:" + error);
         });
-        //xhr.open("POST", "/component", true);
-        //xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        //xhr.send(formdata);
+        
     }
     else
     {
