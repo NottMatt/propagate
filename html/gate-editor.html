@@ -335,12 +335,21 @@
     load();
   }
   function sendModel() {
-    var data = document.getElementById("mySavedModel").value;
-    var xhr = new XMLHttpRequest()
-    xhr.open("POST", "/component", true);
-    xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(data);
-    console.log("done!")
+    let name = prompt("Please enter component name");
+    let desc = prompt("Please enter component description");
+
+    if ((name != null) && (desc != null)) {
+        var data = document.getElementById("mySavedModel").value;
+        var xhr = new XMLHttpRequest()
+        xhr.open("POST", "/component", true);
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.send(JSON.stringify({
+          'component_name': name,
+          'description': desc,
+          'content': data
+        }));
+        console.log("done!")
+    }
   }
   window.addEventListener('DOMContentLoaded', init);
 </script>
