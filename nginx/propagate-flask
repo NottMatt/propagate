@@ -1,5 +1,5 @@
 server {
-        server_name flask.jericho.sh ;
+        server_name jericho.sh ;
         root /var/www/flask-propagate ;
         index index.html;
 
@@ -16,14 +16,14 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 }
 server {
-    if ($host = flask.jericho.sh) {
+    if ($host = jericho.sh) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 
 
         listen 80 ;
         listen [::]:80 ;
-        server_name flask.jericho.sh ;
+        server_name jericho.sh ;
     return 404; # managed by Certbot
 
 
