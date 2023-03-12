@@ -2,7 +2,7 @@
 function searchPosts()
 {
     console.log("Is happening.")
-    var textvalue = document.getElementsByClassName("search-input").value;
+    var textvalue = document.getElementByID("searchbar").textvalue;
     console.log(textvalue)
 
     fetch("search/" + new URLSearchParams({"q": textvalue}))
