@@ -20,6 +20,7 @@ body {
   
     background-color: rgb(40, 40, 45);
   }
+
   .containers {
     display: flex;
     flex-direction: row;
@@ -57,6 +58,7 @@ body {
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  justify-content: left;
 }
 
 .feed-post {
@@ -65,7 +67,6 @@ body {
   width: 60vw;
   border: none;
   border-radius: var(--corner-rad);
-  margin: auto;
   padding: 10px;
   margin-bottom: 10px;
   cursor: pointer;
