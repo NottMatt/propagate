@@ -12,3 +12,9 @@ function searchPosts()
             )
         });
 }
+
+document.getElementById("searchbar").addEventListener("keyup", ({key}) => {
+    if (key === "Enter") {
+			searchPosts()
+    }
+})
