@@ -7,3 +7,9 @@ function searchPosts()
         .then((response) => response.json())
         .then((data) => console.log(data));
 }
+
+document.getElementById("searchbar").addEventListener("keyup", ({key}) => {
+    if (key === "Enter") {
+			searchPosts()
+    }
+})
