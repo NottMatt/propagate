@@ -1,101 +1,367 @@
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=0.5" />
-        <link rel="stylesheet" href="../style/editor-style.css" />
-        <title>Propagate Editor</title>
-        <script src="/javascript/gate-manager.js"></script>
-    </head>
-    <body onload="fetchLibrary()">
-        <!-- editor containers -->
-        <div class="editor-containers">
-            <div class="library-container editor-container">
-                <div class="library"><h2>LIBRARY</h2>
-                <p id='library-pane'></p></div>
-            </div>
-            <div class="editor-window-container editor-container">
-                <svg class="editor-window" id="editor-window">
 
-                    
-                </svg>
-            </div>
-            <div class="toolbar-container editor-container">
-                <div class="toolbar"><h2>GATES</h2>
-                    <div class="gate-list">
-                        <button class="gate-btn" id="and-btn" title="AND gate">
-                            <svg  class="gate-svg">
-                                <image class="gate-img" href= "../svg/and.svg" alt="and"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="nand-btn" title="NAND gate">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/nand.svg" alt="nand"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="or-btn" title="OR gate">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/or.svg" alt="or"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="nor-btn" title="NOR gate">
-                            <svg class="gate-svg"> 
-                                <image class="gate-img" href= "../svg/nor.svg" alt="nor"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="xor-btn" title="XOR gate">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/xor.svg" alt="xor"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="xnor-btn" title="XNOR gate">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/xnor.svg" alt="xnor"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="not-btn" title="NOT gate">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/not.svg" alt="not"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="led_r-btn" title="Red Indicator Light">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/led_r.svg" alt="led_r"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="led_g-btn" title="Green Indicator Light">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/led_g.svg" alt="led_g"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="led_b-btn" title="Blue Indicator Light">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/led_b.svg" alt="led_b"/>
-                            </svg>
-                        </button>
-                        <button class="gate-btn" id="clock-btn" title="Clock">
-                            <svg class="gate-svg">
-                                <image class="gate-img" href= "../svg/clock.svg" alt="clock"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="menu-container">
-            <a class="back-btn" href="/">Back</a>
-            <div class="button-container">
-                <button class="clear-btn menu-btn">Clear</button>
-                <button class="save-btn menu-btn">Save</button>
-            </div>
-        </div>
-    </body>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"
-      integrity="sha512-NxocnqsXP3zm0Xb42zqVMvjQIktKEpTIbCXXyhBPxqGZHqhcOXHs4pXI/GoZ8lE+2NJONRifuBpi9DxC58L0Lw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="/javascript/canvas-init.js"></script>
-    <script src="/javascript/gate.js"></script>
-</html>
+  <!DOCTYPE html>
+  <html lang="en">
+    <link rel="stylesheet" href="../style/editor-style.css" />
+  <body>
+  <script src="https://unpkg.com/gojs@2.3.3/release/go.js"></script>
+  
+  <div id="allSampleContent" class="p-4 w-full">
+  <script src="https://unpkg.com/gojs@2.3.3/extensions/Figures.js"></script>
+    <script id="code">
+
+    var red = "rgb(255, 102, 102)";  // 0 or false
+    var green = "rgb(102, 255, 153)";  // 1 or true
+
+    function init() {
+
+      
+      const $ = go.GraphObject.make;  // for conciseness in defining templatessaveModel
+
+      myDiagram =
+        $(go.Diagram, "myDiagramDiv",  // create a new Diagram in the HTML DIV element "myDiagramDiv"
+          {
+            "draggingTool.isGridSnapEnabled": true,  // dragged nodes will snap to a grid of 10x10 cells
+            "undoManager.isEnabled": true
+          });
+
+      // when the document is modified, add a "*" to the title and enable the "Save" button
+      myDiagram.addDiagramListener("Modified", e => {
+        var button = document.getElementById("saveModel");
+        if (button) button.disabled = !myDiagram.isModified;
+        var idx = document.title.indexOf("*");
+        if (myDiagram.isModified) {
+          if (idx < 0) document.title += "*";
+        } else {
+          if (idx >= 0) document.title = document.title.slice(0, idx);
+        }
+      });
+
+      var palette = new go.Palette("palette");  // create a new Palette in the HTML DIV element "palette"
+
+      // creates relinkable Links that will avoid crossing Nodes when possible and will jump over other Links in their paths
+      myDiagram.linkTemplate =
+        $(go.Link,
+          {
+            routing: go.Link.AvoidsNodes,
+            curve: go.Link.JumpOver,
+            corner: 3,
+            relinkableFrom: true, relinkableTo: true,
+            selectionAdorned: false, // Links are not adorned when selected so that their color remains visible.
+            shadowOffset: new go.Point(0, 0), shadowBlur: 5, shadowColor: "whitesmoke",
+          },
+          new go.Binding("isShadowed", "isSelected").ofObject(),
+          $(go.Shape,
+            { name: "SHAPE", strokeWidth: 2, stroke: red }));
+
+      // node template helpers
+      var sharedToolTip =
+        $("ToolTip",
+          { "Border.figure": "RoundedRectangle" },
+          $(go.TextBlock, { margin: 2 },
+            new go.Binding("text", "", d => d.category)));
+
+      // define some common property settings
+      function nodeStyle() {
+        return [new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        new go.Binding("isShadowed", "isSelected").ofObject(),
+        {
+          selectionAdorned: false,
+          shadowOffset: new go.Point(0, 0),
+          shadowBlur: 15,
+          shadowColor: "whitesmoke",
+          toolTip: sharedToolTip
+        }];
+      }
+
+      function shapeStyle() {
+        return {
+          name: "NODESHAPE",
+          fill: "rgb(50, 50, 55)",
+          stroke: "white",
+          desiredSize: new go.Size(40, 40),
+          strokeWidth: 2
+        };
+      }
+
+      function portStyle(input) {
+        return {
+          desiredSize: new go.Size(6, 6),
+          fill: "white",
+          fromSpot: go.Spot.Right,
+          fromLinkable: !input,
+          toSpot: go.Spot.Left,
+          toLinkable: input,
+          toMaxLinks: 1,
+          cursor: "pointer"
+        };
+      }
+
+      // define templates for each type of node
+      var inputTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "Circle", shapeStyle(),
+            { fill: red }),  // override the default fill (from shapeStyle()) to be red
+          $(go.Shape, "Rectangle", portStyle(false),  // the only port
+            { portId: "", alignment: new go.Spot(1, 0.5) }),
+          { // if double-clicked, an input node will change its value, represented by the color.
+            doubleClick: (e, obj) => {
+              e.diagram.startTransaction("Toggle Input");
+              var shp = obj.findObject("NODESHAPE");
+              shp.fill = (shp.fill === green) ? red : green;
+              updateStates();
+              e.diagram.commitTransaction("Toggle Input");
+            }
+          }
+        );
+
+      var outputTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "Rectangle", shapeStyle(),
+            { fill: green }),  // override the default fill (from shapeStyle()) to be green
+          $(go.Shape, "Rectangle", portStyle(true),  // the only port
+            { portId: "", alignment: new go.Spot(0, 0.5) })
+        );
+
+      var andTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "AndGate", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in1", alignment: new go.Spot(0, 0.3) }),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in2", alignment: new go.Spot(0, 0.7) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      var orTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "OrGate", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in1", alignment: new go.Spot(0.16, 0.3) }),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in2", alignment: new go.Spot(0.16, 0.7) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      var xorTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "XorGate", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in1", alignment: new go.Spot(0.26, 0.3) }),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in2", alignment: new go.Spot(0.26, 0.7) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      var norTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "NorGate", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in1", alignment: new go.Spot(0.16, 0.3) }),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in2", alignment: new go.Spot(0.16, 0.7) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      var xnorTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "XnorGate", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in1", alignment: new go.Spot(0.26, 0.3) }),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in2", alignment: new go.Spot(0.26, 0.7) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      var nandTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "NandGate", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in1", alignment: new go.Spot(0, 0.3) }),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in2", alignment: new go.Spot(0, 0.7) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      var notTemplate =
+        $(go.Node, "Spot", nodeStyle(),
+          $(go.Shape, "Inverter", shapeStyle()),
+          $(go.Shape, "Rectangle", portStyle(true),
+            { portId: "in", alignment: new go.Spot(0, 0.5) }),
+          $(go.Shape, "Rectangle", portStyle(false),
+            { portId: "out", alignment: new go.Spot(1, 0.5) })
+        );
+
+      // add the templates created above to myDiagram and palette
+      myDiagram.nodeTemplateMap.add("input", inputTemplate);
+      myDiagram.nodeTemplateMap.add("output", outputTemplate);
+      myDiagram.nodeTemplateMap.add("and", andTemplate);
+      myDiagram.nodeTemplateMap.add("or", orTemplate);
+      myDiagram.nodeTemplateMap.add("xor", xorTemplate);
+      myDiagram.nodeTemplateMap.add("not", notTemplate);
+      myDiagram.nodeTemplateMap.add("nand", nandTemplate);
+      myDiagram.nodeTemplateMap.add("nor", norTemplate);
+      myDiagram.nodeTemplateMap.add("xnor", xnorTemplate);
+
+      // share the template map with the Palette
+      palette.nodeTemplateMap = myDiagram.nodeTemplateMap;
+
+      palette.model.nodeDataArray = [
+        { category: "input" },
+        { category: "output" },
+        { category: "and" },
+        { category: "or" },
+        { category: "xor" },
+        { category: "not" },
+        { category: "nand" },
+        { category: "nor" },
+        { category: "xnor" }
+      ];
+
+      // load the initial diagram
+      load();
+
+      // continually update the diagram
+      loop();
+    }
+
+    // update the diagram every 250 milliseconds
+    function loop() {
+      setTimeout(() => { updateStates(); loop(); }, 250);
+    }
+
+    // update the value and appearance of each node according to its type and input values
+    function updateStates() {
+      var oldskip = myDiagram.skipsUndoManager;
+      myDiagram.skipsUndoManager = true;
+      // do all "input" nodes first
+      myDiagram.nodes.each(node => {
+        if (node.category === "input") {
+          doInput(node);
+        }
+      });
+      // now we can do all other kinds of nodes
+      myDiagram.nodes.each(node => {
+        switch (node.category) {
+          case "and": doAnd(node); break;
+          case "or": doOr(node); break;
+          case "xor": doXor(node); break;
+          case "not": doNot(node); break;
+          case "nand": doNand(node); break;
+          case "nor": doNor(node); break;
+          case "xnor": doXnor(node); break;
+          case "output": doOutput(node); break;
+          case "input": break;  // doInput already called, above
+        }
+      });
+      myDiagram.skipsUndoManager = oldskip;
+    }
+
+    // helper predicate
+    function linkIsTrue(link) {  // assume the given Link has a Shape named "SHAPE"
+      return link.findObject("SHAPE").stroke === green;
+    }
+
+    // helper function for propagating results
+    function setOutputLinks(node, color) {
+      node.findLinksOutOf().each(link => link.findObject("SHAPE").stroke = color);
+    }
+
+    // update nodes by the specific function for its type
+    // determine the color of links coming out of this node based on those coming in and node type
+
+    function doInput(node) {
+      // the output is just the node's Shape.fill
+      setOutputLinks(node, node.findObject("NODESHAPE").fill);
+    }
+
+    function doAnd(node) {
+      var color = node.findLinksInto().all(linkIsTrue) ? green : red;
+      setOutputLinks(node, color);
+    }
+    function doNand(node) {
+      var color = !node.findLinksInto().all(linkIsTrue) ? green : red;
+      setOutputLinks(node, color);
+    }
+    function doNot(node) {
+      var color = !node.findLinksInto().all(linkIsTrue) ? green : red;
+      setOutputLinks(node, color);
+    }
+
+    function doOr(node) {
+      var color = node.findLinksInto().any(linkIsTrue) ? green : red;
+      setOutputLinks(node, color);
+    }
+    function doNor(node) {
+      var color = !node.findLinksInto().any(linkIsTrue) ? green : red;
+      setOutputLinks(node, color);
+    }
+
+    function doXor(node) {
+      var truecount = 0;
+      node.findLinksInto().each(link => { if (linkIsTrue(link)) truecount++; });
+      var color = truecount % 2 !== 0 ? green : red;
+      setOutputLinks(node, color);
+    }
+    function doXnor(node) {
+      var truecount = 0;
+      node.findLinksInto().each(link => { if (linkIsTrue(link)) truecount++; });
+      var color = truecount % 2 === 0 ? green : red;
+      setOutputLinks(node, color);
+    }
+
+    function doOutput(node) {
+      // assume there is just one input link
+      // we just need to update the node's Shape.fill
+      node.linksConnected.each(link => { node.findObject("NODESHAPE").fill = link.findObject("SHAPE").stroke; });
+    }
+
+    // save a model to and load a model from JSON text, displayed below the Diagram
+    function save() {
+      document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+      myDiagram.isModified = false;
+    }
+    function load() {
+      myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+    }
+    function clear() {
+      document.getElementById("mySavedModel").value = document.getElementById("default-model").value;
+      console.log("clearing editor");
+      load();
+    }
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+
+<div id="sample">
+  <div style="width: 100%; display: flex; justify-content: space-between">
+    <div id="palette" style="width: 100px; height: 500px; margin-right: 2px; background-color: rgb(30, 30, 35); border: 1px solid black; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); cursor: auto;"><canvas tabindex="0" width="122" height="622" style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; touch-action: none; width: 98px; height: 498px; cursor: auto;">This text is displayed if your browser does not support the Canvas HTML element.</canvas><div style="position: absolute; overflow: auto; width: 98px; height: 498px; z-index: 1;"><div style="position: absolute; width: 1px; height: 1px;"></div></div></div>
+    <div id="myDiagramDiv" style="flex-grow: 1; height: 500px; border: 1px solid black; position: relative; -webkit-tap-highlight-color: rgba(255, 255, 255, 0); cursor: auto;"><canvas tabindex="0" width="1190" height="622" style="position: absolute; top: 0px; left: 0px; z-index: 2; user-select: none; touch-action: none; width: 952px; height: 498px; cursor: auto;">This text is displayed if your browser does not support the Canvas HTML element.</canvas><div style="position: absolute; overflow: auto; width: 952px; height: 498px; z-index: 1;"><div style="position: absolute; width: 1px; height: 1px;"></div></div></div>
+  </div>
+  
+  <div>
+    <div>
+      <button class="btn" id="saveModel" onclick="save()">Save</button>
+      <button class="btn" onclick="load()">Load</button>
+      <button class="btn" onclick="location.reload()">Clear</button>
+      <button class="btn" onclick="location.reload()">Post</button>
+      <a href="/"><button class="btn">Back</button></a>
+    </div>
+    <textarea id="mySavedModel" style="width:100%;height:200px">{ "class": "go.GraphLinksModel",
+  "linkFromPortIdProperty": "fromPort",
+  "linkToPortIdProperty": "toPort",
+  "nodeDataArray": [],
+  "linkDataArray": []}
+    </textarea>
+    <textarea id="default-model" hidden>{ "class": "go.GraphLinksModel",
+      "linkFromPortIdProperty": "fromPort",
+      "linkToPortIdProperty": "toPort",
+      "nodeDataArray": [],
+      "linkDataArray": []}</textarea>
+  </div>
+  </body>
+  </html>
