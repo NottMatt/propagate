@@ -113,4 +113,7 @@ h3 {
   height: 30%;
   border-radius: var(--corner-rad);
 }
+.logo {
+  width: 100%;
+}
 
