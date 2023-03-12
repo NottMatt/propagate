@@ -71,7 +71,6 @@ body {
   margin-bottom: 10px;
   cursor: pointer;
 }
-
 .search-bar {
   max-width: calc(100% - (2 * var(--margin-width)));
   margin: var(--margin-width);
