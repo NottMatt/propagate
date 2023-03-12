@@ -99,7 +99,6 @@ body {
 .search-btn:active {
   background-color: var(--btn-color-active);
 }
-
 h2 {
   background-color: var(--btn-color);
   color: white;
