@@ -66,6 +66,7 @@ body {
   margin: auto;
   padding: 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .search-bar {
