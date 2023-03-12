@@ -16,9 +16,9 @@ function searchPosts()
                 data.forEach(
                     element => feedbody.innerHTML +=
                     ("<div class=\"feed-post\"><h2>"
-                    + data["component_name"]
+                    + element["component_name"]
                     + "</h2><h3>"
-                    + data["description"]
+                    + element["description"]
                     + "</h3></div>")
                 )
             }
