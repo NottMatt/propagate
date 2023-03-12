@@ -36,9 +36,9 @@ def login():
 @app.route('/is-logged-in', methods=['GET'])
 def is_logged_in():
     if 'user_id' in flask.session.keys():
-        return {'response': True}
+        return 'true'
     else:
-        return {'response': False}
+        return 'false'
 
 
 @app.route('/logout', methods=['GET'])
