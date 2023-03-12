@@ -349,9 +349,19 @@
         formdata.append("description", desc)
         formdata.append("content", JSON.stringify(data))
 
-        xhr.open("POST", "/component", true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.send(formdata);
+        fetch("/component", {
+            method: "POST",
+            body: formdata,
+        }).then((response) => response.json()
+        ).then((data) => {
+          console.log("Success:", data);
+        }
+        ).catch((error) => {
+          console.error("Error:", error);
+        });
+        //xhr.open("POST", "/component", true);
+        //xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        //xhr.send(formdata);
     }
     else
     {
