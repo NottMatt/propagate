@@ -1,7 +1,7 @@
 body {
     margin: 0 0;
     font-family: "Courier New";
-    overflow: hidden;
+    overflow-x: hidden;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -55,6 +55,17 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.feed-post {
+  background-color: darkgray;
+  height: 250px;
+  weight: 150px;
+  border: solid;
+  border-width: 1px;
+  margin: auto;
+  padding: 10px
+}
+
 .search-bar {
   max-width: calc(100% - (2 * var(--margin-width)));
   margin: var(--margin-width);
