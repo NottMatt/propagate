@@ -14,7 +14,12 @@ function searchPosts()
             }
             else {
                 data.forEach(
-                    element => feedbody.innerHTML += "<div class=\"feed-post\"><h2>Testing name</h2><h3>Testing desc</h3></div>"
+                    element => feedbody.innerHTML +=
+                    ("<div class=\"feed-post\"><h2>"
+                    + data["component_name"]
+                    + "</h2><h3>"
+                    + data["description"]
+                    + "</h3></div>")
                 )
             }
 
