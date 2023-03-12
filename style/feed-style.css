@@ -61,7 +61,7 @@ body {
 .feed-post {
   background-color: var(--bg-color);
   height: 250px;
-  width: 80vw;
+  width: 60vw;
   border: none;
   border-radius: var(--corner-rad);
   margin: auto;
