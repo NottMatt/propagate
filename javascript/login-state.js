@@ -1,4 +1,4 @@
-fetch("/isloggedin", { 
+fetch("/is-logged-in", { 
     method: 'GET'
   })
       .then(function(response) { 
