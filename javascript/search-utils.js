@@ -8,7 +8,7 @@ function searchPosts()
         .then((data) =>
         {
             data.foreach(
-                document.getElementById("feed-body").innerHTML += "<div class=\"feed-post\"><h2>Testing name</h2><h3>Testing desc</h3></div>"
+                element => document.getElementById("feed-body").innerHTML += "<div class=\"feed-post\"><h2>Testing name</h2><h3>Testing desc</h3></div>"
             )
         });
 }
