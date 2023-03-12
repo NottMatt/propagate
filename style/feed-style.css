@@ -62,23 +62,21 @@ body {
 }
 .feed-post {
   background-color: var(--bg-color);
-  height: 250px;
   width: 100%;
   border: none;
   border-radius: var(--corner-rad);
-  padding: 10px;
   margin-bottom: 10px;
-  margin-right: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   cursor: pointer;
 }
 .search-bar {
-  /*max-width: calc(100% - (2 * var(--margin-width)));*/
-  /*margin: var(--margin-width);*/
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   margin-bottom: 15px;
   margin-top: 15px;
+  width: 100%;
 }
 .search-input {
   border-radius: var(--corner-rad);
@@ -95,6 +93,9 @@ body {
     height: 30px;
     border-radius: var(--corner-rad);
     padding: 10px;
+	text-align: center;
+	justify-content: center;
+	align: center;
     font-family: "Courier New";
     color: white;
     /*margin-right: 10px; */
@@ -113,13 +114,14 @@ h2 {
   background-color: var(--btn-color);
   color: white;
   padding: 10px;
+  margin: 10px;
   border-radius: var(--corner-rad);
 }
 h3 {
   background-color: rgb(40, 40, 45);
   color: grey;
   padding: 10px;
-  height: 30%;
+  margin: 10px;
   border-radius: var(--corner-rad);
 }
 .logo {
