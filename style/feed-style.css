@@ -39,7 +39,7 @@ body {
 
   .nav-btn {
     padding: 20px;
-    width: 200px;
+    width: 15vw;
     height: 20px;
     color: white;
     background-color: var(--container-color);
@@ -63,37 +63,49 @@ body {
 .feed-post {
   background-color: var(--bg-color);
   height: 250px;
-  width: 60vw;
+  width: 100%;
   border: none;
   border-radius: var(--corner-rad);
   padding: 10px;
   margin-bottom: 10px;
+  margin-right: 0px;
   cursor: pointer;
 }
 .search-bar {
-  max-width: calc(100% - (2 * var(--margin-width)));
-  margin: var(--margin-width);
+  /*max-width: calc(100% - (2 * var(--margin-width)));*/
+  /*margin: var(--margin-width);*/
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin-bottom: 15px;
+  margin-top: 15px;
 }
 .search-input {
   border-radius: var(--corner-rad);
+  display: flex;
+  flex-grow: 5;
   padding: 10px;
   width: 30vw;
   height: 30px;
+  margin-right: 10px;
 }
 .search-btn {
   background-color: var(--btn-color);
     border: none;
-    height: 35px;
+    height: 30px;
     border-radius: var(--corner-rad);
     padding: 10px;
     font-family: "Courier New";
     color: white;
-    margin-right: 10px;
+    /*margin-right: 10px; */
     width: 8vw;
+	display: flex;
 }
+
+.right-spacer {
+	width: 20vw;
+}
+
 .search-btn:active {
   background-color: var(--btn-color-active);
 }
