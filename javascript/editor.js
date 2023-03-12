@@ -14,7 +14,7 @@ function loadSavedFile() {
         .then((response) => response.json())
         .then((data) =>
         {
-            console.log(((data['content'])['value']))
+            console.log((data['content']))
             document.getElementById("default-model").value = ((data['content'])['value']);
             load();
         });
