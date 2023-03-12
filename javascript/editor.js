@@ -8,7 +8,7 @@ function getUrlParam(name) {
 function loadSavedFile() {
     try {
         id = getUrlParam("id")
-        console.log("id")
+        console.log(id)
     }
     catch (error) {
         console.error(error)
