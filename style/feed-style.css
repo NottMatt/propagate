@@ -50,8 +50,6 @@ body {
 
 /* feed */
 .feed-container {
-  position: relative;
-  left: var(--margin-width);
   background-color: rgb(40, 40, 45);
   height: 100vh;
   width: 80vw;
