@@ -55,6 +55,7 @@ body {
   width: 80vw;
   display: flex;
   justify-content: left;
+  flex-direction: column;
 }
 
 .feed-post {
