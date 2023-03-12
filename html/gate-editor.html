@@ -347,7 +347,7 @@
 
         formdata.append("component_name", name)
         formdata.append("description", desc)
-        formdata.append("content", data)
+        formdata.append("content", JSON.stringify(data))
 
         xhr.open("POST", "/component", true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
