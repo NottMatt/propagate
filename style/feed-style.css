@@ -18,7 +18,7 @@ body {
     --btn-color-active: rgb(100, 100, 105);
   
   
-    background-color: var(--bg-color);
+    background-color: rgb(40, 40, 45);
   }
   .containers {
     display: flex;
@@ -28,6 +28,7 @@ body {
 
   /* nav buttons */
   .nav-container {
+    background-color: rgb(40, 40, 45);
     display: flex;
     width: 20vw;
     flex-wrap: nowrap;
@@ -49,21 +50,24 @@ body {
 
 /* feed */
 .feed-container {
-  background-color: var(--container-color);
+  background-color: rgb(40, 40, 45);
   height: 100vh;
   width: 80vw;
   display: flex;
   flex-direction: column;
+  justify-content: left;
 }
 
 .feed-post {
   background-color: var(--bg-color);
   height: 250px;
-  width: calc(100% - (2 * var(--margin-width)));
+  width: 60vw;
   border: none;
   border-radius: var(--corner-rad);
   margin: auto;
-  padding: 10px
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .search-bar {
