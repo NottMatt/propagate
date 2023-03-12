@@ -141,7 +141,16 @@ def search():
         description like %(search_term)s;
         ''', {'search_term': '%' + search_term + '%'})
         search_results = cur.fetchall()
-        return search_results
+        search_results_json = []
+        for result in search_results:
+            search_results_json.append({
+                'component_id': result[0],
+                'creator_id': result[1],
+                'component_name': result[2],
+                'description': result[3],
+                'content': result[4]
+                })
+        return search_results_json
 
 
 # Handle Components
@@ -163,8 +172,8 @@ def component():
                 preceded_by = request.form['preceded_by']
                 cur.execute('''
                 insert into components (creator_id, component_name,
-                description, content, preceded_by) values (%(creator_id)i,
-                %(name)s, %(description)s, %(content)s, %(preceded_by)i)
+                description, content, preceded_by) values (%(creator_id)s,
+                %(name)s, %(description)s, %(content)s, %(preceded_by)s)
                 ''', 
                 {'creator_id': creator_id, 'name': component_name,
                     'description': description, 'content': content,
@@ -172,15 +181,16 @@ def component():
             else:
                 cur.execute('''
                 insert into components (creator_id, component_name,
-                description, content) values (%(creator_id)i, %(name)s,
+                description, content) values (%(creator_id)s, %(name)s,
                 %(description)s, %(content)s)
                 ''', 
                 {'creator_id': creator_id, 'name': component_name,
                     'description': description, 'content': content})
+            return flask.redirect(flask.url_for("gate_editor"))
     else:
         component_id = request.args.get('id')
         with get_db_connection() as conn, conn.cursor() as cur:
-            cur.execute("select * from components where id = '%(id)' ;", {'id': component_id})
+            cur.execute("select * from components where id = '%(id)s' ;", {'id': component_id})
             component = cur.fetchone()
             if component is None:
                 print(f'Error getting component from id', file=sys.stderr)
@@ -197,7 +207,7 @@ def get_db_connection():
 
 def get_username_from_id(id: str) -> str:
     with get_db_connection() as conn, conn.cursor() as cur:
-        cur.execute("select username from users where id = '%(user_id)' ;", {'user_id': id})
+        cur.execute("select username from users where id = '%(user_id)s' ;", {'user_id': id})
         user = cur.fetchone()
         if user is None:
             print(f'Error getting username from id', file=sys.stderr)
