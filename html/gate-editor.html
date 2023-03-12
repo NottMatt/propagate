@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <link rel="stylesheet" href="../style/editor-style.css" />
+  <link rel="icon" type="image/x-icon" href="../svg/propagate-logo.ico">
 <body>
 <script src="https://unpkg.com/gojs@2.3.3/release/go.js"></script>
 
@@ -224,6 +225,10 @@
     ];
 
     // load the initial diagram
+    
+    fetch('/open-with-editor').then((response) => response.json()).then((data) => {
+      document.getElementById("default-model").value = data;
+    });
     load();
 
     // continually update the diagram
