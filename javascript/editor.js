@@ -11,7 +11,7 @@ function loadSavedFile() {
         console.log(id)
 
         // With the id, we need to check to see if is in the database.
-        fetch("component?", + new URLSearchParams({"id": id}))
+        fetch("component?" + new URLSearchParams({"id": id}))
         .then((response) => response.json())
         .then((data) =>
         {
