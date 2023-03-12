@@ -8,14 +8,14 @@ function getUrlParam(name) {
 function loadSavedFile() {
     try {
         id = getUrlParam("id")
-        console.log(id)
 
         // With the id, we need to check to see if is in the database.
         fetch("component?" + new URLSearchParams({"id": id}))
         .then((response) => response.json())
         .then((data) =>
         {
-            console.log(data)
+            document.getElementById("default-model").value = ((data['content'])['value']);
+            load();
         });
     }
     catch (error) {
