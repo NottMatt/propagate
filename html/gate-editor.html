@@ -224,6 +224,10 @@
     ];
 
     // load the initial diagram
+    
+    fetch('/open-with-editor').then((response) => response.json()).then((data) => {
+      document.getElementById("default-model").value = data;
+    });
     load();
 
     // continually update the diagram
