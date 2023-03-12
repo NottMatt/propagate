@@ -64,7 +64,8 @@ body {
   border: none;
   border-radius: var(--corner-rad);
   margin: auto;
-  padding: 10px
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .search-bar {
