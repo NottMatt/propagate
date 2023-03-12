@@ -3,9 +3,9 @@
 <html lang="en">
   <link rel="stylesheet" href="../style/editor-style.css" />
   <link rel="icon" type="image/x-icon" href="../svg/propagate-logo.ico">
-<body>
+<body onload="loadSavedFile()">
 <script src="https://unpkg.com/gojs@2.3.3/release/go.js"></script>
-
+<script src="../javascript/editor.js"></script>
 <div id="allSampleContent" class="p-4 w-full">
 <script src="https://unpkg.com/gojs@2.3.3/extensions/Figures.js"></script>
   <script id="code">
@@ -15,7 +15,6 @@
 
   function init() {
 
-    
     const $ = go.GraphObject.make;  // for conciseness in defining templatessaveModel
 
     myDiagram =
