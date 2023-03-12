@@ -59,7 +59,6 @@ body {
     border-radius: var(--corner-rad);
     font-family: "Courier New";
   }
-  
   .failure-container {
     display: flex;
     justify-content: center;
