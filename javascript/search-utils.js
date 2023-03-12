@@ -10,7 +10,7 @@ function searchPosts()
             var feedbody = document.getElementById("feed-body")
             feedbody.innerHTML = ""
             if (data.length == 0) {
-                feedbody.innerHTML = "<p style=\"color='red'\">No results</p>"
+                feedbody.innerHTML = "<p style=\"color: red\">No results</p>"
             }
             else {
                 data.forEach(
